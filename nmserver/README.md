@@ -1,13 +1,14 @@
 # Home Assistant Add-on: NM SSH server & syslog & WWW
 
-Allow logging in remotely to Home Assistant using SSH or just the web terminal with Ingress.
+Permite logar remotamente no Home Assistant usando SSH ou apenas o terminal web.
+Permite criar cgi script e usar RESTful Command.
 
 ![Supports aarch64 Architecture][aarch64-shield] ![Supports amd64 Architecture][amd64-shield] ![Supports armhf Architecture][armhf-shield] ![Supports armv7 Architecture][armv7-shield] ![Supports i386 Architecture][i386-shield]
 
 ## About
 
-Setting up an SSH server allows access to your Home Assistant folders with any SSH
-client. It also includes a command-line tool to access the Home Assistant API.
+Baseado em "Home Assistant Add-on: SSH server"
+Mais informacoes em "https://github.com/home-assistant/addons/tree/master/ssh".
 
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg

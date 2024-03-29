@@ -9,5 +9,14 @@
 #    exec sleep infinity
 #fi
 
+CONFIG_DIR=/config/nmserver
+CONFIG_FILE="${CONFIG_DIR}/syslog-ng.conf"
+
+if ! bashio::fs.file_exists "${CONFIG_FILE}"; then
+  bashio::log.info "Copiando configuracao padrao Syslog para ${CONFIG_FILE}"
+  mkdir -p "${CONFIG_DIR}"
+  cp  /nmserver-config-ori/syslog-ng.conf "${CONFIG_FILE}"
+fi
+
 bashio::log.info "Starting the syslog-ng daemon..."
-exec /usr/sbin/syslog-ng -F -e
+exec /usr/sbin/syslog-ng -F -e -f "${CONFIG_FILE}"

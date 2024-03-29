@@ -9,11 +9,12 @@
 #    exec sleep infinity
 #fi
 
-CONFIG_DIR=/config/nmserver
+CONFIG_DIR=/config/nmserver/www
 
 if ! bashio::fs.directory_exists "${CONFIG_DIR}"; then
-  bashio::log.info "Copiando configuracao padrao para ${CONFIG_DIR}"
-  cp -r /addons/nmserver/rootfs/etc/nginx/ha-config-ori/nmserver /config
+  bashio::log.info "Copiando configuracao padrao WWW para ${CONFIG_DIR}"
+  mkdir -p "${CONFIG_DIR}"
+  cp -r /nmserver-config-ori/www/* "${CONFIG_DIR}"
 fi
 
 bashio::log.info "Starting the nginx daemon..."

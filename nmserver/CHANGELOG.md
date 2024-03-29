@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.14
+
+## 1.0.13
+
+## 1.0.12
+
+- incluido exmplo de cgc que retorna JSON
+- alaterado diretorio de syslog para /config/nmserver/syslog/${HOST}/${YEAR}_${MONTH}.lo
+
 ## 1.0.11
 
 - corrigido link github
