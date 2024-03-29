@@ -1,9 +1,9 @@
 ---
-version: 1.0.10
+version: 1.0.11
 slug: nmserver
 name: NM Server SSH & Http & Syslog
 description: Allow logging in remotely to Home Assistant using SSH
-url: https://github.com/mdenadai/home-assistant/nmserver
+url: https://github.com/mdenadai/home-assistant/tree/master/nmserver
 #codenotary: notary@home-assistant.io
 advanced: true
 arch:

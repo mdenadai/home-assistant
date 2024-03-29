@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.11
+
+- corrigido link github
+
 ## 1.0.10
 
 - corrigido copy para /config/nmserver
