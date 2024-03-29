@@ -1,0 +1,15 @@
+Usage:
+  syslog-ng [OPTION…] syslog-ng
+
+Process options
+  -F, --foreground                                           Do not go into the background after initialization
+  --process-mode=<foreground|background|safe-background>     Set process running mode
+  -u, --user=<user>                                          Set the user to run as
+  -g, --group=<group>                                        Set the group to run as
+  -C, --chroot=<dir>                                         Chroot to this directory
+  --caps=<capspec>                                           Set default capability set
+  --no-caps                                                  Disable managing Linux capabilities
+  -p, --pidfile=<pidfile>                                    Set path to pid file
+  --enable-core                                              Enable dumping core files
+  --fd-limit                                                 The minimum required number of fds
+

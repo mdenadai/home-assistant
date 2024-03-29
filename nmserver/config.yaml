@@ -1,0 +1,52 @@
+---
+version: 1.0.10
+slug: nmserver
+name: NM Server SSH & Http & Syslog
+description: Allow logging in remotely to Home Assistant using SSH
+url: https://github.com/mdenadai/home-assistant/nmserver
+#codenotary: notary@home-assistant.io
+advanced: true
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+audio: true
+hassio_api: true
+hassio_role: manager
+host_dbus: true
+#image: homeassistant/{arch}-addon-ssh
+ingress: true
+init: false
+map:
+  - addons:rw
+  - all_addon_configs:rw
+  - backup:rw
+  - homeassistant_config:rw
+  - media:rw
+  - share:rw
+  - ssl:rw
+options:
+  authorized_keys: []
+  password: ""
+  apks: []
+  server:
+    tcp_forwarding: false
+panel_icon: mdi:console
+panel_title: NM Terminal
+ports:
+  22/tcp: null
+  80/tcp: null
+  514/udp: 514
+  514/tcp: 514
+schema:
+  authorized_keys:
+    - str
+  password: password
+  apks:
+    - str
+  server:
+    tcp_forwarding: bool
+startup: services
+uart: true
