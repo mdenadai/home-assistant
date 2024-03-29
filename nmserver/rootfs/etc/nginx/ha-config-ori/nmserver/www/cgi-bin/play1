@@ -34,21 +34,15 @@ JSON
 do_GET() {
   echo "Status: 200 OK"
   echo ""
-  resultado="NONE"
   if [ -f /media/$QUERY_STRING ]; then
     if ! paplay /media/$QUERY_STRING ; then
-      resultado="PLAY ERRO"
+      echo "PLAY ERRO"
     else
-      resultado="OK"
+      echo "OK"
     fi
   else
-    resultado="NOT FOUND"
+    echo "NOT FOUND"
   fi
-cat <<JSON
-{
-    "result": "$resultado"
-}
-JSON
 }
 
 # Print out available ENV vars
