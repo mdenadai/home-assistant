@@ -1,12 +1,17 @@
 # Baseado em Home Assistant Add-on: Terminal & SSH
 
   Para configuracao do SSH ver Home Assistant Add-on: Terminal & SSH
+
   https://github.com/home-assistant/addons/tree/master/ssh
+
+#### Diretorio de arquivos de configuracao
+
+    /config/nmserver
 
 
 #### Exemplo de CGI para reproduzir audio
 
-  "curl http://local-nmserver/cgi-bin/play?alarme.wav"
+   curl http://local-nmserver/cgi-bin/play?alarme.wav
 
 #### Usando RESTful Command
 
@@ -17,6 +22,8 @@
         url: "http://local-nmserver/cgi-bin/play?alarme.wav"
         method: GET
 
-#### RESTful Command
+#### Referencia RESTful Command
 
     https://www.home-assistant.io/integrations/rest_command/
+
+
