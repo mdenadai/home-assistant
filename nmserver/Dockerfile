@@ -23,6 +23,7 @@ RUN \
         nginx \
         fcgiwrap \
         sudo \
+        ffplay \
     \
     && apk add --no-cache --virtual .build-dependencies \
         bsd-compat-headers \
