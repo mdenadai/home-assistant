@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.18
+
+- Incluido exemplo de cgi para ffplay via POST
+  /config/nmserver/www/cgi-bin/ffplay
+
 ## 1.0.17
 
 ## 1.0.16
