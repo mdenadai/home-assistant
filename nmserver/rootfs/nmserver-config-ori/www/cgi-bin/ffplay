@@ -13,10 +13,11 @@ do_POST() {
   echo "Status: 200 OK"
   echo ""
   resultado="NONE"
-  ERRMSG=$(ffplay -nodisp -vn -autoexit -nostats -hide_banner $QUERY_STRING_POST 2>&1)
+#  ERRMSG=$(ffplay -nodisp -vn -autoexit -nostats -hide_banner $QUERY_STRING_POST 2>&1)
+  ERRMSG=$(echo ffplay -nodisp -vn -autoexit -nostats -hide_banner $QUERY_STRING_POST|at now 2>/dev/null)
+  RC=$?
   ERRMSG="${ERRMSG//$'\n'/' '}"
   ERRMSG="${ERRMSG//$':'/' '}"
-  RC=$?
   if  [ "${RC}" -ne "0" ]; then
     resultado="ERRO $ERRMSG"
   elif [ -n "$ERRMSG" ]; then
@@ -26,7 +27,8 @@ do_POST() {
   fi
   cat <<JSON
 {
-    "result": "$resultado"
+    "result": "$resultado",
+    "datetime": "$(date)"
 }
 JSON
 }

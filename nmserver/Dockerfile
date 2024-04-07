@@ -24,6 +24,7 @@ RUN \
         fcgiwrap \
         sudo \
         ffplay \
+        at \
     \
     && apk add --no-cache --virtual .build-dependencies \
         bsd-compat-headers \
@@ -85,6 +86,8 @@ RUN curl -Lso /usr/bin/ha \
         "https://github.com/home-assistant/cli/releases/download/${CLI_VERSION}/ha_${BUILD_ARCH}" \
     && chmod a+x /usr/bin/ha \
     && /usr/bin/ha completion > /usr/share/bash-completion/completions/ha
+
+RUN echo nginx >> /etc/at.allow
 
 # Copy data
 COPY rootfs /
