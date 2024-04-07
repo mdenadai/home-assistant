@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.19
+
+- Atualizado exemplo de cgi para ffplay via POST
+
 ## 1.0.18
 
 - Incluido exemplo de cgi para ffplay via POST

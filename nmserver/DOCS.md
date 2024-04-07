@@ -57,4 +57,5 @@
 #### NOTA 
 
     Exemplos originais de configuracao e CIG em /nmserver-config-ori
+    Acesso via WEB UI
 
