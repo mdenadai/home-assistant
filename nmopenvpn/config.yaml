@@ -1,0 +1,32 @@
+---
+version: 1.0.1
+slug: nmopenvpn
+name: NM OpenVpn
+description: Allow remote access
+url: https://github.com/mdenadai/home-assistant/tree/master/nmopenvpn
+#codenotary: notary@home-assistant.io
+advanced: true
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+hassio_api: true
+host_network: true
+#hassio_role: admin
+#host_dbus: true
+privileged:
+  - NET_ADMIN
+#image: homeassistant/{arch}-addon-ssh
+#ingress: true
+init: false
+map:
+  - addons:rw
+  - all_addon_configs:rw
+  - backup:rw
+  - homeassistant_config:rw
+  - media:rw
+  - share:rw
+  - ssl:rw
+startup: services

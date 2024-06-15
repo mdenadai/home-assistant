@@ -1,0 +1,27 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start openvpn service
+# ==============================================================================
+
+## If SSH is disabled, use a fake sleep process
+#if ! bashio::var.has_value "$(bashio::addon.port 22)"; then
+#    bashio::log.warning "SSH port is disabled. Prevent start of SSH server." 
+#    exec sleep infinity
+#fi
+
+CONFIG_DIR=/config/nmserver
+CONFIG_FILE="${CONFIG_DIR}/openvpn.conf"
+
+if ! bashio::fs.directory_exists "${CONFIG_DIR}"; then
+  bashio::log.info "Criando diretorio de configuracao ${CONFIG_DIR}"
+  mkdir -p "${CONFIG_DIR}"
+fi
+
+if bashio::fs.file_exists "${CONFIG_FILE}"; then
+ bashio::log.info "Starting the openvpn daemon..."
+ cd "${CONFIG_DIR}"
+ exec /usr/sbin/openvpn --config "${CONFIG_FILE}"
+else
+ bashio::log.warning "Arquivo de configuracao ${CONFIG_FILE} nao encontrado"
+ exit 1
+fi
