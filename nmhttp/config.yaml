@@ -1,0 +1,32 @@
+---
+version: 1.0.1
+slug: nmhttp
+name: NM HTTP
+description: Permite criar cgi script e usar RESTful Command.
+url: https://github.com/mdenadai/home-assistant/tree/master/nmhttp
+#codenotary: notary@home-assistant.io
+advanced: true
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+audio: true
+hassio_api: true
+hassio_role: manager
+host_dbus: true
+#image: homeassistant/{arch}-addon-ssh
+#ingress: true
+init: false
+map:
+  - addons:rw
+  - all_addon_configs:rw
+  - backup:rw
+  - homeassistant_config:rw
+  - media:rw
+  - share:rw
+  - ssl:rw
+ports:
+  80/tcp: null
+startup: services

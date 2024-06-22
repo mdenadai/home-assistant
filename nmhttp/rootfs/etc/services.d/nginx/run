@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start nginx service
+# ==============================================================================
+
+## If SSH is disabled, use a fake sleep process
+#if ! bashio::var.has_value "$(bashio::addon.port 22)"; then
+#    bashio::log.warning "SSH port is disabled. Prevent start of SSH server." 
+#    exec sleep infinity
+#fi
+
+CONFIG_DIR=/config/nmserver/www
+
+if ! bashio::fs.directory_exists "${CONFIG_DIR}"; then
+  bashio::log.info "Copiando configuracao padrao WWW para ${CONFIG_DIR}"
+  mkdir -p "${CONFIG_DIR}"
+  cp -r /nmserver-config-ori/www/* "${CONFIG_DIR}"
+fi
+
+bashio::log.info "Starting the nginx daemon..."
+exec /usr/sbin/nginx

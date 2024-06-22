@@ -1,0 +1,17 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start fcgiwrap service
+# ==============================================================================
+
+## If SSH is disabled, use a fake sleep process
+#if ! bashio::var.has_value "$(bashio::addon.port 22)"; then
+#    bashio::log.warning "SSH port is disabled. Prevent start of SSH server." 
+#    exec sleep infinity
+#fi
+
+bashio::log.info "Starting the at daemon..."
+/usr/sbin/atd
+
+bashio::log.info "Starting the fcgiwrap daemon..."
+rm -f /var/run/fcgiwrap/fcgiwrap.socket
+exec sudo -u nginx /usr/bin/fcgiwrap -c 4 -s unix:/var/run/fcgiwrap/fcgiwrap.socket

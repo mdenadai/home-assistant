@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+
+#-------------------------------------------------------------------------
+read_POST_vars() {
+  if [[ "$REQUEST_METHOD" = "POST" ]] && [[ ! -z "$CONTENT_LENGTH" ]]; then
+    QUERY_STRING_POST=$(dd bs="${CONTENT_LENGTH}" count=1 status=none)
+  fi
+}
+
+#-------------------------------------------------------------------------
+do_POST() {
+  echo "Status: 200 OK"
+  echo ""
+  resultado="NONE"
+#  ERRMSG=$(ffplay -nodisp -vn -autoexit -nostats -hide_banner $QUERY_STRING_POST 2>&1)
+  ERRMSG=$(echo ffplay -nodisp -vn -autoexit -nostats -hide_banner $QUERY_STRING_POST|at now 2>/dev/null)
+  RC=$?
+  ERRMSG="${ERRMSG//$'\n'/' '}"
+  ERRMSG="${ERRMSG//$':'/' '}"
+  if  [ "${RC}" -ne "0" ]; then
+    resultado="ERRO $ERRMSG"
+  elif [ -n "$ERRMSG" ]; then
+    resultado="ERRO $ERRMSG"
+  else
+    resultado="OK"
+  fi
+  cat <<JSON
+{
+    "result": "$resultado",
+    "datetime": "$(date)"
+}
+JSON
+}
+
+#-------------------------------------------------------------------------
+do_GET() {
+  echo "Status: 405 Method Not Allowed"
+  echo ""
+  cat <<JSON
+{
+    "result": "Method GET Not Allowed"
+}
+JSON
+}
+
+#-------------------------------------------------------------------------
+# Print out available ENV vars
+#/usr/bin/env
+
+read_POST_vars
+
+# Common headers goes here
+echo "Content-Type: application/json"
+
+case $REQUEST_METHOD in
+  POST)
+    do_POST
+    ;;
+  GET)
+    do_GET
+    ;;
+  *)
+    echo "No handle for $REQUEST_METHOD"
+    exit 0
+    ;;
+esac
