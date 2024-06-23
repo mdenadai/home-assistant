@@ -6,6 +6,7 @@ RUN \
     set -x \ 
     && apk add --no-cache \
         bash-completion \
+        sox \
         pulseaudio-utils \
         alsa-plugins-pulse \
         bluez \

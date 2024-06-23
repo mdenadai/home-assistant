@@ -10,12 +10,16 @@
 #fi
 
 CONFIG_DIR=/config/nmserver/www
+NOME=$(/bin/hostname)
 
 if ! bashio::fs.directory_exists "${CONFIG_DIR}"; then
   bashio::log.info "Copiando configuracao padrao WWW para ${CONFIG_DIR}"
   mkdir -p "${CONFIG_DIR}"
   cp -r /nmserver-config-ori/www/* "${CONFIG_DIR}"
 fi
+
+bashio::log.info "****** nome do host: ${NOME} ******"
+bashio::log.info "****** uso: http://${NOME}/cgi-bin ******"
 
 bashio::log.info "Starting the nginx daemon..."
 exec /usr/sbin/nginx

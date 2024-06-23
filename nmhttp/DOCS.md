@@ -10,6 +10,8 @@
 
     - curl http://local-nmhttp/cgi-bin/play?alarme.wav
     - curl http://local-nmhttp/cgi-bin/ffplay -d "/media/alarme.wav -loop 2 -volume 10"
+    - curl http://local-nmhttp/cgi-bin/sox-play -d "-n synth 3 sin 960 synth 3 sin fmod 1920 fade l 0 3 2.8 trim 0 1 repeat 2"
+           sox-play equivale a: "play -n synth 3 sin 960 synth 3 sin fmod 1920 fade l 0 3 2.8 trim 0 1 repeat 2"
 
 #### RESTful Command
 
@@ -23,6 +25,11 @@
         url: "http://local-nmhttp/cgi-bin/ffplay"
         method: POST
         payload: '{{params}}'
+      soxplay:
+        url: "http://local-nmhttp/cgi-bin/sox-play"
+        method: POST
+        payload: '{{params}}'
+
 
 
 #### Automacao Call Service exemplo
@@ -49,7 +56,7 @@
 
     Nesse caso a url nao sera http://local-nmhttp
     Dever ser algo do tipo http://fe06975f-nmhtpp
-    executar "hostname" no prompt do WEB UI
+    Verificar NOME DO HOST exibido no log
 
 #### NOTA 
 
